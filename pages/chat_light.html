@@ -1,0 +1,247 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Literary Dialogue - The Great Gatsby</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Literata:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#dfe3e8",
+                    "on-secondary-container": "#745c00",
+                    "tertiary": "#040403",
+                    "on-secondary-fixed": "#241a00",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#82868c",
+                    "surface-dim": "#d7dae0",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#43474d",
+                    "outline-variant": "#c5c6cb",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "inverse-primary": "#c3c6cd",
+                    "surface-container": "#ebeef4",
+                    "surface-variant": "#dfe3e8",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#45474b",
+                    "outline": "#75777b",
+                    "secondary-container": "#fed65b",
+                    "on-error": "#ffffff",
+                    "on-surface": "#181c20",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "primary-container": "#1a1e23",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#020407",
+                    "surface-tint": "#5b5f64",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-container-high": "#e5e8ee",
+                    "surface": "#f7f9ff",
+                    "tertiary-container": "#1d1e1b",
+                    "tertiary-fixed": "#e4e2dd",
+                    "inverse-surface": "#2d3135",
+                    "on-primary-fixed": "#181c21",
+                    "background": "#f7f9ff",
+                    "secondary": "#735c00",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "surface-bright": "#f7f9ff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#ffe088",
+                    "inverse-on-surface": "#eef1f7",
+                    "on-tertiary-container": "#868682",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#e0e2e9",
+                    "surface-container-low": "#f1f4fa",
+                    "primary-fixed-dim": "#c3c6cd",
+                    "on-background": "#181c20"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Literata"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "title-md": ["Libre Caslon Text"],
+                    "headline-lg-mobile": ["Libre Caslon Text"],
+                    "headline-lg": ["Libre Caslon Text"],
+                    "body-lg": ["Literata"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .paper-texture {
+            background-color: #f7f9ff;
+            background-image: radial-gradient(#dfe3e8 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .chat-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: #c5c6cb transparent;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background-color: #c5c6cb;
+            border-radius: 10px;
+        }
+        .shadow-soft {
+            box-shadow: 0 10px 30px -10px rgba(2, 4, 7, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md paper-texture min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-on-surface/10 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 hover:bg-on-surface/5 transition-colors active:scale-95 duration-100 text-primary" data-icon="arrow_back">arrow_back</button>
+<div class="flex flex-col">
+<h1 class="font-title-md text-title-md text-primary leading-tight">The Great Gatsby</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic">F. Scott Fitzgerald</span>
+</div>
+</div>
+<div class="flex items-center gap-2"><button class="relative material-symbols-outlined p-2 hover:bg-on-surface/5 transition-colors text-primary" data-icon="notifications">
+  notifications
+  <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="material-symbols-outlined p-2 hover:bg-on-surface/5 transition-colors text-primary" data-icon="more_vert">more_vert</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[container-max] flex-grow flex flex-col pt-16 pb-36 px-margin-mobile md:px-margin-desktop">
+<!-- Chat Area -->
+<div class="flex-grow flex flex-col gap-6 py-8 chat-scroll overflow-y-auto" id="chat-container">
+<!-- AI Message -->
+<div class="flex justify-start max-w-[85%] md:max-w-[70%] animate-fade-in">
+<div class="relative bg-on-surface/5 p-6 rounded-lg border-l-4 border-secondary shadow-soft">
+<p class="font-body-md text-body-md text-on-surface">
+                        "So we beat on, boats against the current, borne back ceaselessly into the past." 
+                        <br><br>
+                        This final line of the novel is one of the most famous in American literature. How do you interpret Gatsby's struggle with time and the American Dream in this context?
+                    </p>
+<span class="block mt-3 font-label-sm text-label-sm text-on-surface-variant">Scholar · 10:14 AM</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex justify-end w-full">
+<div class="max-w-[85%] md:max-w-[70%] bg-surface border border-outline-variant p-6 rounded-lg shadow-soft text-right">
+<p class="font-body-md text-body-md text-on-surface">
+                        It feels like he's saying that no matter how hard we try to move forward, our origins and our history exert a pull that is impossible to escape. Gatsby spent his whole life trying to reinvent himself, but he was always tethered to James Gatz.
+                    </p>
+<span class="block mt-3 font-label-sm text-label-sm text-on-surface-variant">You · 10:16 AM</span>
+</div>
+</div>
+<!-- AI Message -->
+<div class="flex justify-start max-w-[85%] md:max-w-[70%]">
+<div class="relative bg-on-surface/5 p-6 rounded-lg border-l-4 border-secondary shadow-soft">
+<p class="font-body-md text-body-md text-on-surface">
+                        Precisely. The "green light" represents that unreachable future—the orgastic future that year by year recedes before us. It’s the tragedy of hope. Do you think Nick Carraway, as a narrator, shares this pessimistic view, or is he merely documenting Gatsby's specific failure?
+                    </p>
+<span class="block mt-3 font-label-sm text-label-sm text-on-surface-variant">Scholar · 10:18 AM</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Input Container -->
+<div class="fixed bottom-20 left-0 w-full px-margin-mobile md:px-margin-desktop pointer-events-none z-40">
+<div class="max-w-[1200px] mx-auto pointer-events-auto">
+<div class="bg-surface shadow-soft border-t border-on-surface/10 p-4 flex items-end gap-4 rounded-t-xl">
+<div class="flex-grow">
+<div class="relative group">
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-body-md resize-none transition-all duration-300" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'" placeholder="Share your thoughts on the text..." rows="1" style="height:42px;overflow-y:hidden;"></textarea>
+<div class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-focus-within:w-full"></div>
+</div>
+</div>
+<button class="bg-primary text-on-primary w-12 h-12 flex items-center justify-center rounded-lg hover:opacity-90 active:scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface border-t border-on-surface/10 px-margin-mobile">
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-on-surface/5 transition-colors active:scale-90 duration-150 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-on-surface/5 transition-colors active:scale-90 duration-150 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<!-- Decorative Elements (Subtle Book Theme) -->
+<div class="fixed top-20 right-10 opacity-5 pointer-events-none select-none md:block hidden">
+<span class="font-display-lg text-[200px] leading-none">“</span>
+</div>
+<div class="fixed bottom-32 left-10 opacity-5 pointer-events-none select-none md:block hidden">
+<span class="font-display-lg text-[200px] leading-none">”</span>
+</div>
+<script>
+        // Simple micro-interaction for the chat auto-scroll
+        const chatContainer = document.getElementById('chat-container');
+        window.onload = () => {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        };
+
+        // Textarea height adjustment
+        const tx = document.getElementsByTagName("textarea");
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+            tx[i].addEventListener("input", OnInput, false);
+        }
+
+        function OnInput() {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        }
+    </script>
+
+
+</body></html>

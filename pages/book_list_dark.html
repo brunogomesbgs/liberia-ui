@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Literary Dialogue - Chat History</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-surface-variant": "#d1c5b4",
+                "inverse-on-surface": "#2f3034",
+                "surface-bright": "#37393d",
+                "on-background": "#e2e2e6",
+                "on-tertiary-fixed": "#191c20",
+                "primary-fixed-dim": "#e9c176",
+                "tertiary": "#c4c6cd",
+                "surface-container": "#1e2023",
+                "tertiary-container": "#a3a5ab",
+                "tertiary-fixed-dim": "#c4c6cd",
+                "inverse-primary": "#775a19",
+                "error-container": "#93000a",
+                "surface-variant": "#333538",
+                "secondary": "#c5c6ca",
+                "surface-container-lowest": "#0c0e11",
+                "primary-fixed": "#ffdea5",
+                "on-error-container": "#ffdad6",
+                "background": "#111316",
+                "on-tertiary": "#2e3136",
+                "on-primary-container": "#4e3700",
+                "outline": "#9a8f80",
+                "surface-container-high": "#282a2d",
+                "on-primary": "#412d00",
+                "on-secondary-container": "#babcc0",
+                "primary": "#e9c176",
+                "on-primary-fixed": "#261900",
+                "on-error": "#690005",
+                "surface-dim": "#111316",
+                "inverse-surface": "#e2e2e6",
+                "tertiary-fixed": "#e1e2e9",
+                "surface-container-highest": "#333538",
+                "on-secondary-fixed": "#191c1f",
+                "outline-variant": "#4e4639",
+                "on-tertiary-container": "#383b40",
+                "surface-tint": "#e9c176",
+                "secondary-container": "#494c4f",
+                "on-secondary": "#2e3134",
+                "error": "#ffb4ab",
+                "on-primary-fixed-variant": "#5d4201",
+                "secondary-fixed": "#e1e2e6",
+                "surface": "#111316",
+                "secondary-fixed-dim": "#c5c6ca",
+                "on-tertiary-fixed-variant": "#44474c",
+                "primary-container": "#c5a059",
+                "on-surface": "#e2e2e6",
+                "on-secondary-fixed-variant": "#44474a",
+                "surface-container-low": "#1a1c1f"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "container-max": "800px",
+                "margin-desktop": "64px",
+                "unit": "8px",
+                "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                "body-lg": ["Libre Caslon Text"],
+                "display-lg": ["Libre Caslon Text"],
+                "label-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "title-md": ["Libre Caslon Text"],
+                "body-md": ["Libre Caslon Text"],
+                "headline-lg-mobile": ["Libre Caslon Text"],
+                "headline-lg": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-shadow {
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+        }
+        .gold-accent {
+            border-left: 3px solid #e9c176;
+        }
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary/30 selection:text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full z-50 bg-surface border-b border-outline-variant/30 fixed top-0">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-on-surface/5 transition-colors p-2 rounded-full active:scale-95 duration-100" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-primary">Literary Dialogue</h1><div class="relative flex items-center">
+<button class="material-symbols-outlined text-primary hover:bg-on-surface/5 transition-colors p-2 rounded-full active:scale-95 duration-100" data-icon="notifications">
+    notifications
+  </button>
+<span class="absolute top-2 right-2 flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</div>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<nav class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Chat</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary" href="#">History</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Profile</a>
+</nav>
+</div>
+</header>
+<main class="pt-24 pb-28 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Search Section -->
+<div class="mb-10 max-w-2xl mx-auto">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-b border-outline-variant focus:border-primary outline-none font-body-md text-body-md transition-all placeholder:text-outline/60" placeholder="Search your library of thoughts..." type="text"/>
+</div>
+</div>
+<!-- History Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Chat Card 1 -->
+<article class="bg-surface-container-lowest p-6 flex flex-col gap-4 paper-shadow transition-all hover:-translate-y-1 hover:shadow-2xl cursor-pointer group gold-accent">
+<div class="flex gap-4 items-start">
+<div class="w-16 h-24 bg-surface-container-high flex-shrink-0 overflow-hidden shadow-md ring-1 ring-white/10">
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="A detailed, macro photography shot of a classic hardcover book titled 1984 by George Orwell. The cover is aged with beautiful, tactile linen texture in a muted charcoal grey, sitting on a polished mahogany library table. Soft, warm directional light from a nearby window creates deep, scholarly shadows and highlights the golden embossed lettering. The atmosphere is intellectual, quiet, and timeless." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQFUA_874MXOH_cwzpSLxMR_7CudXSQWy62PUOZtL4jpLIvU_nY1s-682ikjhqK3WBuMpSpJNxMTrijidb42ZDRwSKGe4geb97R2gfE69mZD75n3SqxRU0uXKhvysddPKS0yrYpNA3rnriwKC0J0buSi3oq_Nkf45SIIL4bFNxtVNTTln78-HJcDHoliduRuUTTr8Q6AREKmk1eu_mJRXFA1hTYCJgbdsE-DGoziFpAnGXFmEOKA8mgVy32LC3YO-lnJlmpJUnUmar"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">1984 Discussion</h3>
+<p class="font-label-sm text-label-sm text-outline mt-1 uppercase tracking-wider">OCT 24, 2023</p>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 italic">
+                        "The concept of doublethink is particularly relevant when we consider modern digital footprints. How does Winston's internal struggle..."
+                    </p>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-primary-container bg-primary-container px-2 py-0.5 rounded">Analysis</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</article>
+<!-- Chat Card 2 -->
+<article class="bg-surface-container-lowest p-6 flex flex-col gap-4 paper-shadow transition-all hover:-translate-y-1 hover:shadow-2xl cursor-pointer group gold-accent">
+<div class="flex gap-4 items-start">
+<div class="w-16 h-24 bg-surface-container-high flex-shrink-0 overflow-hidden shadow-md ring-1 ring-white/10">
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="A vintage, slightly worn book cover of Pride and Prejudice by Jane Austen, featuring elegant serif typography and subtle floral motifs in a pale cream and sage green palette. The book rests on a soft, white linen cloth in bright, natural morning light. The scene evokes a sense of 19th-century elegance and quiet contemplation, using a soft-focus background to emphasize the tactile quality of the paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzVfS7OwM4XE2desIDqe5fOtqkxS0A2oycTixBZqCqsliqIACXH8_66cXz3AH6BoqprlPl2LSK4mym2c5Kr4gzc4728_nnG3J_xTP3C6Ljgkvjl9c2b_F8T1A19s2II_5Dc3Ig2DgPsL4Fs4CRTSYSmcL6_fUr27ZtwllfEe52VPGwYa3fIZFKzYXNLCYpCzgBYD0AfSoCYZYkJJKk_vHUp9yJa9RbRcLV3EFSkJl8gXy1CL3IoESKoyBGAe8vAaGGWpfz0JViA8vn"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Pride and Prejudice Q&amp;A</h3>
+<p class="font-label-sm text-label-sm text-outline mt-1 uppercase tracking-wider">OCT 12, 2023</p>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 italic">
+                        "Elizabeth’s first impression of Darcy wasn't just about pride, but about a specific type of social guarding prevalent in the regency era..."
+                    </p>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-primary-container bg-primary-container px-2 py-0.5 rounded">Character Study</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</article>
+<!-- Chat Card 3 -->
+<article class="bg-surface-container-lowest p-6 flex flex-col gap-4 paper-shadow transition-all hover:-translate-y-1 hover:shadow-2xl cursor-pointer group gold-accent">
+<div class="flex gap-4 items-start">
+<div class="w-16 h-24 bg-surface-container-high flex-shrink-0 overflow-hidden shadow-md ring-1 ring-white/10">
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="An atmospheric image of a thick, leather-bound volume of Meditations by Marcus Aurelius. The leather is deep brown and distressed, lying on a rough stone surface reminiscent of ancient ruins. Low-angle sunlight creates high contrast and dramatic textures. The visual style is rooted in Stoic philosophy—minimalist, rugged, and profoundly serious, with a palette of earth tones and sharp highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAAytvxa_fwVJOQCjVMHfNHE9iu_r6q5SAWawDNy8dswAFXt7HXW4nso-_T9Mz_MxG-8RH3nDtwtztuHW_4O-OA9oW2UrkKkk6DqIlYPcg7imzgthg8nWIR5Rll6cWGWCBVLK9EhmWPJ-VszJJ1GW_Wg69uluzAffetbHxO_g4lSXjFyTtKKqY9lAdzPuazKKiKDUHuiTxBSgTJS1Rry-pL8D1pzf14h1LU86Yl7EwmArn3suLJSG3QJ9OFZ_xnOTUDmXJuCNnp-QP"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Stoic Reflections</h3>
+<p class="font-label-sm text-label-sm text-outline mt-1 uppercase tracking-wider">SEP 29, 2023</p>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 italic">
+                        "We discussed how Aurelius views the concept of 'logos' as a guiding force in a chaotic world. The application to modern stress..."
+                    </p>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-primary-container bg-primary-container px-2 py-0.5 rounded">Philosophy</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</article>
+<!-- Chat Card 4 -->
+<article class="bg-surface-container-lowest p-6 flex flex-col gap-4 paper-shadow transition-all hover:-translate-y-1 hover:shadow-2xl cursor-pointer group gold-accent">
+<div class="flex gap-4 items-start">
+<div class="w-16 h-24 bg-surface-container-high flex-shrink-0 overflow-hidden shadow-md ring-1 ring-white/10">
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="A minimalist book cover for The Great Gatsby by F. Scott Fitzgerald, featuring Art Deco geometric patterns in gold foil against a dark navy blue background. The book is placed on a sleek glass surface reflecting soft ambient light from a sophisticated lounge. The mood is one of decadent nostalgia and intellectual mystery, with a focus on sharp lines and luxurious textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADtxb2yeSB9Rbjf33pzqJfVXL4QDt4n7VGvzssknUeuk5uojJ1NP8qE8uRc0myXsBLKoEqhx-eH1AELLARGsHEaLrIF7VQAd_49F3qLiMwxTWE9ahgrkvtfqV1v3QWFfC-wzadUGWIA-nyGVpiNADYmo2d_DLPgzrynmjSI_a_rcnJhTVBVsR5v4GaLJ4J8qVJ0SOck99hHA1bb1Ahgcn9L0JjUMSJmEEIvuE6f9IMdSnu_KWjqbFbJcixz6CHcwggNGJqMdHA1yTT"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">The Gatsby Illusion</h3>
+<p class="font-label-sm text-label-sm text-outline mt-1 uppercase tracking-wider">SEP 15, 2023</p>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 italic">
+                        "The green light as a symbol of unattainable desire. Is Gatsby a tragic hero or a cautionary tale of obsession?"
+                    </p>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-primary-container bg-primary-container px-2 py-0.5 rounded">Symbolism</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface px-margin-mobile border-t border-outline-variant/30">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150 p-2">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-md text-label-md">Chat</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold hover:bg-on-surface/5 transition-colors active:scale-90 duration-150 p-2">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-label-md text-label-md">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150 p-2">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple search interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        const cards = document.querySelectorAll('article');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const text = card.querySelector('p.italic').textContent.toLowerCase();
+                if (title.includes(term) || text.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Click effect on cards
+        cards.forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    card.style.transform = 'translateY(-4px)';
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile &amp; Settings - Literary Dialogue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#d1c5b4",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-bright": "#37393d",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary-fixed": "#191c20",
+                        "primary-fixed-dim": "#e9c176",
+                        "tertiary": "#c4c6cd",
+                        "surface-container": "#1e2023",
+                        "tertiary-container": "#a3a5ab",
+                        "tertiary-fixed-dim": "#c4c6cd",
+                        "inverse-primary": "#775a19",
+                        "error-container": "#93000a",
+                        "surface-variant": "#333538",
+                        "secondary": "#c5c6ca",
+                        "surface-container-lowest": "#0c0e11",
+                        "primary-fixed": "#ffdea5",
+                        "on-error-container": "#ffdad6",
+                        "background": "#111316",
+                        "on-tertiary": "#2e3136",
+                        "on-primary-container": "#4e3700",
+                        "outline": "#9a8f80",
+                        "surface-container-high": "#282a2d",
+                        "on-primary": "#412d00",
+                        "on-secondary-container": "#babcc0",
+                        "primary": "#e9c176",
+                        "on-primary-fixed": "#261900",
+                        "on-error": "#690005",
+                        "surface-dim": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "tertiary-fixed": "#e1e2e9",
+                        "surface-container-highest": "#333538",
+                        "on-secondary-fixed": "#191c1f",
+                        "outline-variant": "#4e4639",
+                        "on-tertiary-container": "#383b40",
+                        "surface-tint": "#e9c176",
+                        "secondary-container": "#494c4f",
+                        "on-secondary": "#2e3134",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "secondary-fixed": "#e1e2e6",
+                        "surface": "#111316",
+                        "secondary-fixed-dim": "#c5c6ca",
+                        "on-tertiary-fixed-variant": "#44474c",
+                        "primary-container": "#c5a059",
+                        "on-surface": "#e2e2e6",
+                        "on-secondary-fixed-variant": "#44474a",
+                        "surface-container-low": "#1a1c1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "800px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "label-md": ["Inter"],
+                        "title-md": ["Libre Caslon Text"],
+                        "body-md": ["Libre Caslon Text"],
+                        "headline-lg-mobile": ["Libre Caslon Text"],
+                        "headline-lg": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #333538;
+            border-radius: 10px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md transition-colors duration-300">
+<!-- TopAppBar -->
+<header class="bg-surface-container border-b border-outline-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full z-50 fixed top-0">
+<div class="flex items-center gap-4">
+<button class="hover:bg-on-surface/10 transition-colors p-2 active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-primary">Literary Dialogue</h1>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-4 py-2 rounded-full transition-colors" href="#">Chat</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-4 py-2 rounded-full transition-colors" href="#">History</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary px-4 py-2" href="#">Profile</a>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-0">
+<div class="max-w-[800px] mx-auto">
+<!-- Profile Header Section -->
+<section class="mb-12 text-center md:text-left md:flex md:items-center md:gap-8 bg-surface-container-low p-8 rounded-xl paper-shadow border border-outline-variant/30">
+<div class="relative inline-block mx-auto md:mx-0">
+<img alt="User Avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-surface-container-highest shadow-md" data-alt="A sophisticated portrait of a scholarly woman in her late thirties, wearing elegant dark-framed glasses and a black turtleneck. The lighting is soft and cinematic, with a warm, high-key studio background that creates a pristine, minimalist aesthetic. The image captures a serene and intellectual mood, perfectly aligning with a premium, scholarly design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmfxUSbOFZywlDhrjdf2TN5K9vQZ8EmwguqTxoIbOtgAy2J295npnXjLZWTLO3sTL_sCfEJObXIatC23rmGDGDjVExXDpMD-qgmI7TwYPi8pPHlCKulo9_AbSkgbNtHdcPGE8z-c-OF60lfaw7Q9zUDvcFtqLAnqpYLNNGOepN8mm8liBEVpwf9pwTqqu5AMIGs-WwlfYa2vn02jvyvIANzz6AdJJ5aXQNhgrv2_1IOwcGq942oFfMtSFIyFk957FL_IIpicn0X0B2"/>
+<button class="absolute bottom-2 right-2 bg-primary text-on-primary p-2 rounded-full shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="mt-6 md:mt-0">
+<h2 class="font-display-lg text-headline-lg text-on-surface">Elena Vancura</h2>
+<p class="font-body-md text-on-surface-variant italic">Senior Fellow in Comparative Literature</p>
+<div class="mt-4 flex flex-wrap justify-center md:justify-start gap-4">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-md font-label-md text-on-surface flex items-center gap-1 border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified">verified</span> Premium Member
+                        </span>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-md font-label-md text-on-surface flex items-center gap-1 border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_today">calendar_today</span> Joined Sept 2023
+                        </span>
+</div>
+</div>
+</section>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Preferences Card -->
+<div class="bg-surface-container-low rounded-xl paper-shadow border border-outline-variant/30 overflow-hidden">
+<div class="flex items-center gap-3 p-6 border-b border-outline-variant/30 bg-surface-container-high/50">
+<span class="material-symbols-outlined text-primary" data-icon="settings">settings</span>
+<h3 class="font-title-md text-title-md text-on-surface">Application Settings</h3>
+</div>
+<div class="p-6 space-y-8">
+<!-- Dark Mode Toggle -->
+<div class="flex items-center justify-between group">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Dark Mode</span>
+<span class="text-label-md text-on-surface-variant opacity-80">Nocturnal Ink theme active</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="darkModeToggle" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-6 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant peer-checked:after:bg-on-primary after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div><div class="space-y-4"><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Font Size</span><span class="text-label-md text-on-surface-variant opacity-80">Adjust your reading comfort</span></div><div class="grid grid-cols-3 w-full border border-outline-variant rounded-lg overflow-hidden bg-surface-container"><button class="flex items-center justify-center gap-2 py-3 hover:bg-surface-container-high transition-all active:scale-[0.98] border-r border-outline-variant"><span class="font-label-md text-label-md text-on-surface-variant">A</span></button><button class="flex items-center justify-center gap-2 py-3 bg-primary text-on-primary transition-all active:scale-[0.98] border-r border-outline-variant"><span class="font-label-md text-label-md">AA</span></button><button class="flex items-center justify-center gap-2 py-3 hover:bg-surface-container-high transition-all active:scale-[0.98]"><span class="font-label-md text-label-md text-on-surface-variant">AAA</span></button></div></div>
+<!-- Language Selector -->
+<div class="space-y-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Language Preference</span>
+<span class="text-label-md text-on-surface-variant opacity-80">Select your primary interface language</span>
+</div>
+<div class="flex flex-wrap gap-3"><div class="grid grid-cols-3 w-full border border-outline-variant rounded-lg overflow-hidden bg-surface-container">
+<button class="flex items-center justify-center gap-2 py-3 bg-primary text-on-primary transition-all active:scale-[0.98] border-r border-outline-variant"><span class="font-label-md text-label-md">EN</span></button>
+<button class="flex items-center justify-center gap-2 py-3 hover:bg-surface-container-high transition-all active:scale-[0.98] border-r border-outline-variant"><span class="font-label-md text-label-md text-on-surface-variant">ES</span></button>
+<button class="flex items-center justify-center gap-2 py-3 hover:bg-surface-container-high transition-all active:scale-[0.98]"><span class="font-label-md text-label-md text-on-surface-variant">PT</span></button>
+</div></div>
+</div><div class="space-y-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Warning Token</span>
+<span class="text-label-md text-on-surface-variant opacity-80">Set a trigger alert notification threshold</span>
+</div>
+<div class="flex items-center gap-4">
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="75"/>
+<span class="font-label-md text-label-md text-primary w-12 text-right">75%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Account & Security Card -->
+<div class="bg-surface-container-low rounded-xl paper-shadow border border-outline-variant/30 overflow-hidden">
+<div class="flex items-center gap-3 p-6 border-b border-outline-variant/30 bg-surface-container-high/50">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h3 class="font-title-md text-title-md text-on-surface">Account Management</h3>
+</div>
+<div class="p-6 space-y-4">
+<button class="w-full flex items-center justify-between p-4 rounded-lg hover:bg-surface-container-high transition-colors text-left group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md text-on-surface">Update Bio</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button><button class="w-full flex items-center justify-between p-4 rounded-lg hover:bg-surface-container-high transition-colors text-left group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="lock">lock</span>
+<span class="font-label-md text-label-md text-on-surface">Change Password</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="p-6 mt-4 border-t border-outline-variant/30">
+<button class="w-full bg-primary-container text-on-primary-container py-4 px-6 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 active:scale-[0.98] transition-all hover:bg-primary-container/90 shadow-lg">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                            Log Out
+                        </button>
+</div>
+</div>
+<!-- Danger Zone (Subtle) -->
+<div class="text-center pt-4">
+<button class="text-label-md font-label-md text-error/60 hover:text-error transition-colors uppercase tracking-widest">
+                        Deactivate Account
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container border-t border-outline-variant md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:scale-90 duration-150 w-full h-full" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:scale-90 duration-150 w-full h-full" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-on-surface/5 transition-colors active:scale-90 duration-150 w-full h-full" href="#">
+<span class="material-symbols-outlined" data-icon="person" style='font-variation-settings: "FILL" 1;'>person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Dark Mode Toggle Logic
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        // Force Dark Mode for this themed view per request
+        html.classList.add('dark');
+
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Micro-interactions for language buttons
+        const langButtons = document.querySelectorAll('.flex.flex-wrap.gap-3 button');
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+                    b.classList.add('border-outline-variant', 'bg-surface-container');
+                    const text = b.querySelector('.font-label-md');
+                    if (text) text.classList.add('text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+                btn.classList.remove('border-outline-variant', 'bg-surface-container');
+                const text = btn.querySelector('.font-label-md');
+                if (text) text.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

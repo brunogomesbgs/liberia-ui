@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Literary Dialogue - Authentication</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#d1c5b4",
+                    "inverse-on-surface": "#2f3034",
+                    "surface-bright": "#37393d",
+                    "on-background": "#e2e2e6",
+                    "on-tertiary-fixed": "#191c20",
+                    "primary-fixed-dim": "#e9c176",
+                    "tertiary": "#c4c6cd",
+                    "surface-container": "#1e2023",
+                    "tertiary-container": "#a3a5ab",
+                    "tertiary-fixed-dim": "#c4c6cd",
+                    "inverse-primary": "#775a19",
+                    "error-container": "#93000a",
+                    "surface-variant": "#333538",
+                    "secondary": "#c5c6ca",
+                    "surface-container-lowest": "#0c0e11",
+                    "primary-fixed": "#ffdea5",
+                    "on-error-container": "#ffdad6",
+                    "background": "#111316",
+                    "on-tertiary": "#2e3136",
+                    "on-primary-container": "#4e3700",
+                    "outline": "#9a8f80",
+                    "surface-container-high": "#282a2d",
+                    "on-primary": "#412d00",
+                    "on-secondary-container": "#babcc0",
+                    "primary": "#e9c176",
+                    "on-primary-fixed": "#261900",
+                    "on-error": "#690005",
+                    "surface-dim": "#111316",
+                    "inverse-surface": "#e2e2e6",
+                    "tertiary-fixed": "#e1e2e9",
+                    "surface-container-highest": "#333538",
+                    "on-secondary-fixed": "#191c1f",
+                    "outline-variant": "#4e4639",
+                    "on-tertiary-container": "#383b40",
+                    "surface-tint": "#e9c176",
+                    "secondary-container": "#494c4f",
+                    "on-secondary": "#2e3134",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed-variant": "#5d4201",
+                    "secondary-fixed": "#e1e2e6",
+                    "surface": "#111316",
+                    "secondary-fixed-dim": "#c5c6ca",
+                    "on-tertiary-fixed-variant": "#44474c",
+                    "primary-container": "#c5a059",
+                    "on-surface": "#e2e2e6",
+                    "on-secondary-fixed-variant": "#44474a",
+                    "surface-container-low": "#1a1c1f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "800px",
+                    "margin-desktop": "64px",
+                    "unit": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Libre Caslon Text"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "label-md": ["Inter"],
+                    "title-md": ["Libre Caslon Text"],
+                    "body-md": ["Libre Caslon Text"],
+                    "headline-lg-mobile": ["Libre Caslon Text"],
+                    "headline-lg": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            background-blend-mode: overlay;
+        }
+        .auth-card-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+        .ink-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(209, 197, 180, 0.2), transparent);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Main Container -->
+<main class="min-h-screen flex flex-col md:flex-row paper-texture">
+<!-- Left Side: Visual/Branding (Hidden on Mobile) -->
+<section class="hidden md:flex w-1/2 bg-surface-container-low flex-col justify-center items-center px-margin-desktop relative overflow-hidden border-r border-outline-variant/30">
+<div class="z-10 text-center max-w-md">
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Literary Dialogue</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic">
+                    "A room without books is like a body without a soul."
+                </p>
+<div class="mt-4 font-label-md text-label-md text-outline">— Cicero</div>
+</div>
+<!-- Atmospheric Image Placeholder -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<img alt="Scholarly atmosphere" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQIx7OpUALU2KDlpCFRUFvLxg76wBhZiQR_YHsm-X4Vh0pO0kv1qXiQZM-4UJ72xGXuqdZEW5faJYPQ2OboSTZ-31Red68bZwGTQ8FEddaxI43EKDPXgue_L2vIoYndL2-7iphy_1Ji8ejiCH2P0GNKztummtHn2xbOPGTHwwoXkb0Jgg3JwdUHmhxxi58quR_VIMzM9eD-W9txa1NB3SX2HSsystxke4iSHZtVvCRhMEL5MwB5sThv311iTAw9znDKvfduN9HTapa"/>
+</div>
+</section>
+<!-- Right Side: Auth Forms -->
+<section class="flex-1 flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop py-12 relative">
+<!-- Mobile Brand Header -->
+<header class="md:hidden mb-12 text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Literary Dialogue</h1>
+</header>
+<div class="w-full max-w-[420px] bg-surface-container-lowest p-8 md:p-10 rounded-xl auth-card-shadow transition-all duration-500">
+<!-- Toggle Tab Logic -->
+<div class="flex justify-between mb-8 border-b border-outline-variant/30">
+<button class="pb-3 px-2 font-label-md text-label-md text-primary border-b-2 border-primary transition-all" id="login-tab" onclick="switchMode('login')">Login</button>
+<button class="pb-3 px-2 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all" id="signup-tab" onclick="switchMode('signup')">Create Account</button>
+</div>
+<!-- Form Section -->
+<div id="auth-form-container">
+<h2 class="font-title-md text-title-md text-on-surface mb-2" id="form-title">Welcome Back</h2>
+<p class="font-label-md text-label-md text-on-surface-variant mb-8" id="form-subtitle">Enter your credentials to continue your dialogue.</p>
+<form class="space-y-6" onsubmit="return false;">
+<div class="group">
+<label class="block font-label-md text-[12px] tracking-widest text-outline mb-1 group-focus-within:text-primary transition-colors" for="email">EMAIL ADDRESS</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all py-2 font-body-md text-body-md text-on-surface placeholder:text-outline/50" id="email" name="email" placeholder="scholar@alexandria.edu" type="email"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-[12px] tracking-widest text-outline mb-1 group-focus-within:text-primary transition-colors" for="password">PASSWORD</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary transition-all py-2 font-body-md text-body-md text-on-surface placeholder:text-outline/50" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-[0.98] duration-100 flex justify-center items-center gap-2">
+<span id="submit-text">Sign In</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<div class="relative my-8">
+<div class="ink-divider"></div>
+<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-surface-container-lowest px-4 font-label-md text-[12px] text-outline">OR</span>
+</div>
+<!-- Social Login -->
+<button class="w-full border border-outline-variant py-4 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-variant transition-all flex justify-center items-center gap-3">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span>Continue with Google</span>
+</button>
+</div>
+</div>
+<!-- Language Selection -->
+<footer class="mt-12 flex flex-col items-center gap-4">
+<span class="font-label-md text-[12px] text-outline tracking-widest uppercase">Select Language</span>
+<div class="flex gap-6">
+<button class="group flex flex-col items-center gap-2" title="English">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img alt="US Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6c4GGjrDd0wqMTYn-fsA81gsTno3_FemiiGw0nQZ8TS79U2XIN7ubXzB1CH-EuMO6hQHu9L5Pc4tvOKOosfpfCSxUjzsWKSngrp0oOxyOegIhyvSVonbz70Bp0VYyh_kwDW8b84dMU-KkVKeqKTVwHeGvk86ZUcdnxellglAMwnj7Hx1RWBn1YPOoGTsPK4P90RhbbItY2AlHLq7aFlMiOh40zxi9Yl3ytlVklkcWZvwUe0JIbCk4tdVGgh2NoJ2XUum74ycWKxeT"/>
+</div>
+<span class="font-label-md text-[12px] text-outline group-hover:text-primary">EN</span>
+</button>
+<button class="group flex flex-col items-center gap-2" title="Spanish">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img alt="Spain Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdTOdCQHqmZSmkZwUbgMwGL5wm5tJrch0rPf_zEFDSqE75p92PP8X5vWHqnJzCg_KRtutmd0BbD7NScEsqILDcse--WOAFluk2djotmCOCjAhkDixcwM7LQT_13xNAnMVliEtrfeCgf3Nbos3MmZQ-rL6bT4i7dQGVrSQUp8ha4CzGkD8Zykd3QN4Ua3F0WHu8Lyx06xDd8PCZ8ogfq2LKYoBglevHjzlESE7JfGNkCHfJ2lSKzR4VgEFROuCjKKuxOVRMWWzzfyTT"/>
+</div>
+<span class="font-label-md text-[12px] text-outline group-hover:text-primary">ES</span>
+</button>
+<button class="group flex flex-col items-center gap-2" title="Portuguese">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant group-hover:border-primary transition-colors">
+<img alt="Brazil Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuGRhjSmK7Dk6avc0P6rwNmtRc6pJfYN7XQdOhcyQUN8YmqUmpmtS5LSGHAkt8Gp7OF5FJZ90OblJPeRMuI-4eY1_w5PZq9V9LIwNGffmI37W7Ro-W81UIn4Zd42k2t4Op0XQ906pja54V5L2S4LvTckrSrlgjlr8tLpQEBA0_v9LU0j5ZMYBuTnV-Kh93o2mRm28lDoebDGj5xbO9GUx_S5YfnDRj-0N1SEkRgEqv3Fqjt2RcuqYY9PHqqF3si_JVAuPYxtnnuBAZ"/>
+</div>
+<span class="font-label-md text-[12px] text-outline group-hover:text-primary">PT</span>
+</button>
+</div>
+</footer>
+</section>
+</main>
+<script>
+        function switchMode(mode) {
+            const loginTab = document.getElementById('login-tab');
+            const signupTab = document.getElementById('signup-tab');
+            const formTitle = document.getElementById('form-title');
+            const formSubtitle = document.getElementById('form-subtitle');
+            const submitText = document.getElementById('submit-text');
+
+            if (mode === 'login') {
+                loginTab.classList.add('text-primary', 'border-primary');
+                loginTab.classList.remove('text-on-surface-variant');
+                signupTab.classList.remove('text-primary', 'border-primary');
+                signupTab.classList.add('text-on-surface-variant');
+                
+                formTitle.innerText = 'Welcome Back';
+                formSubtitle.innerText = 'Enter your credentials to continue your dialogue.';
+                submitText.innerText = 'Sign In';
+            } else {
+                signupTab.classList.add('text-primary', 'border-primary');
+                signupTab.classList.remove('text-on-surface-variant');
+                loginTab.classList.remove('text-primary', 'border-primary');
+                loginTab.classList.add('text-on-surface-variant');
+
+                formTitle.innerText = 'Begin Your Journey';
+                formSubtitle.innerText = 'Join our scholarly community and start the conversation.';
+                submitText.innerText = 'Create Account';
+            }
+        }
+
+        // Simple Fade-in micro-interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('.auth-card-shadow');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.8s ease-out';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body></html>

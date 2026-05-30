@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Profile - Literary Dialogue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c3c6cd",
+                    "primary": "#020407",
+                    "inverse-surface": "#2d3135",
+                    "on-secondary-container": "#745c00",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-dim": "#d7dae0",
+                    "surface-container": "#ebeef4",
+                    "on-background": "#181c20",
+                    "surface-container-highest": "#dfe3e8",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-primary-fixed": "#181c21",
+                    "on-error-container": "#93000a",
+                    "background": "#f7f9ff",
+                    "primary-fixed": "#e0e2e9",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary": "#735c00",
+                    "surface-container-high": "#e5e8ee",
+                    "inverse-on-surface": "#eef1f7",
+                    "surface": "#f7f9ff",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "outline-variant": "#c5c6cb",
+                    "surface-tint": "#5b5f64",
+                    "surface-container-low": "#f1f4fa",
+                    "inverse-primary": "#c3c6cd",
+                    "tertiary-fixed": "#e4e2dd",
+                    "surface-variant": "#dfe3e8",
+                    "secondary-container": "#fed65b",
+                    "on-primary-container": "#82868c",
+                    "on-primary-fixed-variant": "#43474d",
+                    "on-tertiary-container": "#868682",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-container": "#1d1e1b",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "outline": "#75777b",
+                    "on-surface-variant": "#45474b",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "tertiary": "#040403",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#181c20",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f7f9ff",
+                    "primary-container": "#1a1e23"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Literata"],
+                    "title-md": ["Libre Caslon Text"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Libre Caslon Text"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "body-md": ["Literata"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f7f9ff;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #75777b;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23020407'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/10 custom-scrollbar">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant/30 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full z-50 docked full-width top-0 fixed">
+<div class="flex items-center gap-4">
+<button class="hover:bg-on-surface/5 transition-colors active:scale-95 duration-100 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Edit Profile</h1>
+</div>
+<div class="hidden md:flex gap-6">
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer hover:text-primary transition-colors">Chat</span>
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer hover:text-primary transition-colors">History</span>
+<span class="font-label-md text-label-md text-primary font-bold">Profile</span>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-[800px] mx-auto px-margin-mobile md:px-0">
+<!-- Profile Picture Section -->
+<section class="flex flex-col items-center mb-12">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-outline-variant bg-surface-container-high shadow-sm">
+<img alt="Profile" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALxWzkvRVyawrlCmEdDojOYFbfTLUjqfpbGg5xiXNv_OVUe8zCrqIyDtgABAU7hc1Q6Di41jddEbbha08AWkGNztFCocYKBoYBCuCIBxCWHXrJIZUX02h0sV6qH_RN2VXC8hIdCakejAgBky8PEho9RU3WVPSwatQPNTBX_K7E0hZr1G8xTwNAC3mZ6q0ps32IQARmuqWxQg6OtLVESaO9txVOFt9OIHtDK7P9-jl0V00WLSCG7gyNWtwJ3IDXGCZab2eDFiYJEWlE"/>
+</div>
+<div class="absolute inset-0 flex flex-col items-center justify-center rounded-full bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">photo_camera</span>
+<span class="font-label-md text-[10px] uppercase tracking-widest text-primary mt-1">Change</span>
+</div>
+</div>
+<p class="mt-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] text-[11px]">Profile Identity</p>
+</section>
+<!-- Form Fields -->
+<form class="space-y-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Full Name -->
+<div class="relative">
+<label class="block font-label-md text-label-sm text-on-surface-variant mb-2 uppercase tracking-widest">Full Name</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-body-md py-3 transition-colors placeholder-on-surface-variant/30" placeholder="Enter your name" type="text" value="Julian Thorne"/>
+</div>
+<!-- Email -->
+<div class="relative">
+<label class="block font-label-md text-label-sm text-on-surface-variant mb-2 uppercase tracking-widest">Email Address</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-body-md py-3 transition-colors placeholder-on-surface-variant/30" placeholder="email@example.com" type="email" value="thorne.j@nocturnal-ink.edu"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Phone -->
+<div class="relative">
+<label class="block font-label-md text-label-sm text-on-surface-variant mb-2 uppercase tracking-widest">Phone Number</label>
+<input class="w-full bg-surface-container-low border-0 border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-body-md py-3 transition-colors placeholder-on-surface-variant/30" placeholder="+1 (000) 000-0000" type="tel" value="+1 (212) 555-0198"/>
+</div>
+<!-- Locale -->
+<div class="relative">
+<label class="block font-label-md text-label-sm text-on-surface-variant mb-2 uppercase tracking-widest">Locale</label>
+<select class="w-full bg-surface-container-low border-0 border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-body-md py-3 transition-colors">
+<option selected="">English (United Kingdom)</option>
+<option>English (United States)</option>
+<option>French (Paris)</option>
+<option>German (Berlin)</option>
+</select>
+</div>
+</div>
+<!-- Bio -->
+<div class="relative">
+<label class="block font-label-md text-label-sm text-on-surface-variant mb-2 uppercase tracking-widest">Bio</label>
+<textarea class="w-full bg-surface-container-low border-0 border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-body-md py-3 transition-colors resize-none placeholder-on-surface-variant/30" placeholder="Tell us about your literary journey..." rows="4">Exploring the intersection of Victorian gothic literature and modern digital existentialism. Always searching for the perfect semicolon.</textarea>
+</div>
+<!-- Timezone -->
+<div class="relative">
+<label class="block font-label-md text-label-sm text-on-surface-variant mb-2 uppercase tracking-widest">Timezone</label>
+<select class="w-full bg-surface-container-low border-0 border-b border-outline focus:border-primary focus:ring-0 text-on-surface font-body-md py-3 transition-colors">
+<option selected="">Greenwich Mean Time (GMT+0)</option>
+<option>Eastern Standard Time (GMT-5)</option>
+<option>Pacific Standard Time (GMT-8)</option>
+<option>Central European Time (GMT+1)</option>
+</select>
+</div>
+<!-- Submit -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<p class="text-on-surface-variant font-label-md text-xs italic">Last updated: Oct 24, 2023</p>
+<button class="w-full md:w-auto px-12 py-4 bg-primary text-on-primary font-label-md font-bold uppercase tracking-widest rounded-lg hover:bg-primary/90 transition-all active:scale-95 duration-150 shadow-md" type="submit">
+                    Save Changes
+                </button>
+</div>
+</form>
+<!-- Scholarly Quote Decor -->
+<div class="mt-24 border-l-2 border-primary pl-6 py-2 italic opacity-60">
+<p class="font-body-md text-on-surface">"To write is to discover what you believe, but to edit is to decide what you will stand by."</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface px-margin-mobile border-t border-outline-variant/30">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-on-surface/5 transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-md text-[10px] mt-1">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-on-surface/5 transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-[10px] mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for input focus
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) {
+                    label.style.letterSpacing = '0.3em';
+                    label.style.color = '#020407';
+                    label.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                }
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) {
+                    label.style.letterSpacing = '0.05em';
+                    label.style.color = '';
+                }
+            });
+        });
+
+        // Form submission demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Updating...';
+            btn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                btn.innerText = 'Profile Updated';
+                btn.classList.remove('bg-primary', 'text-on-primary');
+                btn.classList.add('bg-surface-container-highest', 'text-on-surface');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('bg-surface-container-highest', 'text-on-surface', 'opacity-80');
+                    btn.classList.add('bg-primary', 'text-on-primary');
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>
