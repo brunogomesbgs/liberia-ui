@@ -70,9 +70,23 @@ export class ChatService {
         return;
       }
 
+      let sender: 'agent' | 'admin' = 'agent';
+      let content = event.data;
+
+      // Check if message is JSON and has a sender
+      try {
+        const parsed = JSON.parse(event.data);
+        if (parsed.sender && parsed.content) {
+          sender = parsed.sender === 'admin' ? 'admin' : 'agent';
+          content = parsed.content;
+        }
+      } catch (e) {
+        // Not JSON, use default sender 'agent' and raw content
+      }
+
       const newMessage: Message = {
-        sender: 'agent',
-        content: event.data,
+        sender: sender,
+        content: content,
         timestamp: new Date()
       };
       this.messages.update(msgs => [...msgs, newMessage]);
@@ -105,6 +119,32 @@ export class ChatService {
       this.socket.send(content);
     } else {
       console.error('Cannot send message: WebSocket not connected');
+    }
+  }
+
+  sendFeedback(index: number, feedback: 'up' | 'down') {
+    let finalFeedback: 'up' | 'down' | undefined = feedback;
+    
+    this.messages.update(msgs => {
+      const newMsgs = [...msgs];
+      if (newMsgs[index]) {
+        // Toggle if same feedback is clicked
+        if (newMsgs[index].feedback === feedback) {
+          delete newMsgs[index].feedback;
+          finalFeedback = undefined;
+        } else {
+          newMsgs[index] = { ...newMsgs[index], feedback };
+        }
+      }
+      return newMsgs;
+    });
+
+    if (this.socket && this.connectionStatus() === 'connected') {
+      this.socket.send(JSON.stringify({
+        type: 'feedback',
+        messageIndex: index,
+        feedback: finalFeedback
+      }));
     }
   }
 

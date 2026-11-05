@@ -8,9 +8,10 @@ export interface AuthResponse {
 }
 
 export interface Message {
-  sender: 'user' | 'agent';
+  sender: 'user' | 'agent' | 'admin';
   content: string;
   timestamp: Date;
+  feedback?: 'up' | 'down';
 }
 
 export interface Book {

@@ -49,11 +49,22 @@ import { ChatService } from '../../services/chat.service';
           <p>Connecting to agent...</p>
         </div>
 
-        <div *ngFor="let msg of chatService.messages()"
+        <div *ngFor="let msg of chatService.messages(); let i = index"
              [class]="'message-wrapper ' + msg.sender">
           <div class="message-bubble">
+            <div class="sender-label" *ngIf="msg.sender === 'admin'">Human Assistant</div>
             <p>{{ msg.content }}</p>
-            <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
+            <div class="message-footer">
+              <div class="feedback-actions" *ngIf="msg.sender === 'admin'">
+                <button mat-icon-button (click)="onFeedback(i, 'up')" [color]="msg.feedback === 'up' ? 'primary' : ''" title="Thumb Up">
+                  <mat-icon [class.filled]="msg.feedback === 'up'">thumb_up</mat-icon>
+                </button>
+                <button mat-icon-button (click)="onFeedback(i, 'down')" [color]="msg.feedback === 'down' ? 'warn' : ''" title="Thumb Down">
+                  <mat-icon [class.filled]="msg.feedback === 'down'">thumb_down</mat-icon>
+                </button>
+              </div>
+              <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
+            </div>
           </div>
         </div>
 
@@ -128,7 +139,7 @@ import { ChatService } from '../../services/chat.service';
     .message-wrapper.user {
       align-self: flex-end;
     }
-    .message-wrapper.agent {
+    .message-wrapper.agent, .message-wrapper.admin {
       align-self: flex-start;
     }
     .message-bubble {
@@ -141,10 +152,19 @@ import { ChatService } from '../../services/chat.service';
       background-color: #e3f2fd;
       border-bottom-right-radius: 0;
     }
-    .agent .message-bubble {
+    .agent .message-bubble, .admin .message-bubble {
       background-color: #fff;
       border-bottom-left-radius: 0;
       border-left: 4px solid #ffd740;
+    }
+    .admin .message-bubble {
+      border-left-color: #ff5722;
+    }
+    .sender-label {
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: #ff5722;
+      margin-bottom: 4px;
     }
     .message-bubble.typing {
       padding: 12px 20px;
@@ -170,9 +190,35 @@ import { ChatService } from '../../services/chat.service';
     .timestamp {
       font-size: 0.7rem;
       color: #757575;
-      margin-top: 4px;
       display: block;
       text-align: right;
+    }
+    .message-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      gap: 8px;
+    }
+    .feedback-actions {
+      display: flex;
+      gap: 0;
+    }
+    .feedback-actions button {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feedback-actions mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+    .filled {
+      font-variation-settings: 'FILL' 1;
     }
     .input-area {
       padding: 16px;
@@ -222,6 +268,10 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.chatService.sendMessage(this.newMessage.trim());
       this.newMessage = '';
     }
+  }
+
+  onFeedback(index: number, feedback: 'up' | 'down') {
+    this.chatService.sendFeedback(index, feedback);
   }
 
   private scrollToBottom(): void {

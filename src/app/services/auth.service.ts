@@ -61,6 +61,8 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/users`, {
       username,
       password_hash: password // Backend expects password_hash in UserIn_Pydantic
+    }, {
+      headers: { 'X-Origin': 'liberia-ui' }
     });
   }
 
