@@ -143,6 +143,7 @@ export class ChatService {
       this.socket.send(JSON.stringify({
         type: 'feedback',
         messageIndex: index,
+        totalMessages: this.messages().length,
         feedback: finalFeedback
       }));
     }

@@ -24,6 +24,18 @@ import { BookService } from '../../services/book.service';
     <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
       <mat-dialog-content>
         <div style="display: flex; flex-direction: column; gap: 16px; min-width: 400px; padding-top: 8px;">
+          <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px dashed #9fa8da; border-radius: 8px; background: #f8f9ff;">
+            <label style="font-size: 0.85rem; font-weight: 500; color: #3f51b5;">
+              Upload Book File (PDF, EPUB, TXT, MD) — or paste text below
+            </label>
+            <input type="file"
+                   accept=".pdf,.epub,.txt,.md,.markdown"
+                   (change)="onFileSelected($event)">
+            <small *ngIf="selectedFile" style="color: #2e7d32;">
+              Selected: {{ selectedFile.name }} ({{ (selectedFile.size / 1024) | number:'1.0-1' }} KB)
+            </small>
+          </div>
+
           <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
             <input matInput formControlName="title" placeholder="Enter book title">
@@ -36,17 +48,17 @@ import { BookService } from '../../services/book.service';
             <mat-error *ngIf="bookForm.get('author')?.hasError('required')">Author is required</mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" *ngIf="!selectedFile">
             <mat-label>Content</mat-label>
             <textarea matInput formControlName="content" rows="10" placeholder="Paste book content here"></textarea>
-            <mat-error *ngIf="bookForm.get('content')?.hasError('required')">Content is required</mat-error>
+            <mat-error *ngIf="bookForm.get('content')?.hasError('required')">Content is required when no file is uploaded</mat-error>
           </mat-form-field>
         </div>
       </mat-dialog-content>
       <mat-dialog-actions align="end">
         <button mat-button type="button" (click)="onCancel()">Cancel</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid || loading">
-          {{ loading ? 'Creating...' : 'Create Book' }}
+        <button mat-raised-button color="primary" type="submit" [disabled]="!canSubmit() || loading">
+          {{ loading ? 'Ingesting & Chunking...' : 'Create Book' }}
         </button>
       </mat-dialog-actions>
     </form>
@@ -63,29 +75,60 @@ export class CreateBookDialogComponent {
     content: ['', Validators.required]
   });
 
+  selectedFile: File | null = null;
   loading = false;
 
-  onSubmit() {
-    if (this.bookForm.valid) {
-      this.loading = true;
-      const val = this.bookForm.value;
-      this.bookService.createBook({
-        title: val.title!,
-        author: val.author!,
-        content: val.content!
-      }).subscribe({
-        next: (book) => {
-          console.log('Book created successfully:', book);
-          this.loading = false;
-          // Ensure we pass a value that evaluates to true
-          this.dialogRef.close(book || true);
-        },
-        error: (err) => {
-          this.loading = false;
-          console.error('Failed to create book', err);
-        }
-      });
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files && input.files.length > 0 ? input.files[0] : null;
+    this.selectedFile = file;
+
+    const contentCtrl = this.bookForm.get('content');
+    if (file) {
+      contentCtrl?.clearValidators();
+      contentCtrl?.updateValueAndValidity();
+      const currentTitle = this.bookForm.get('title')?.value;
+      if (!currentTitle) {
+        const inferredTitle = file.name.replace(/\.[^/.]+$/, '').replace(/[_-]+/g, ' ');
+        this.bookForm.patchValue({ title: inferredTitle });
+      }
+    } else {
+      contentCtrl?.setValidators([Validators.required]);
+      contentCtrl?.updateValueAndValidity();
     }
+  }
+
+  canSubmit(): boolean {
+    if (this.selectedFile) {
+      return !!(this.bookForm.get('title')?.valid && this.bookForm.get('author')?.valid);
+    }
+    return this.bookForm.valid;
+  }
+
+  onSubmit() {
+    if (!this.canSubmit()) return;
+    this.loading = true;
+    const val = this.bookForm.value;
+
+    const req$ = this.selectedFile
+      ? this.bookService.uploadBook(this.selectedFile, val.title || undefined, val.author || undefined)
+      : this.bookService.createBook({
+          title: val.title!,
+          author: val.author!,
+          content: val.content!
+        });
+
+    req$.subscribe({
+      next: (book) => {
+        console.log('Book created successfully:', book);
+        this.loading = false;
+        this.dialogRef.close(book || true);
+      },
+      error: (err) => {
+        this.loading = false;
+        console.error('Failed to create book', err);
+      }
+    });
   }
 
   onCancel() {

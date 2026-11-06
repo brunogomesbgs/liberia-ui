@@ -22,10 +22,20 @@ export interface Book {
   created_at: string;
   updated_at: string;
   vector?: string | null;
+  source_format?: string;
+  filename?: string | null;
+  chunk_count?: number;
+  ingestion_status?: string;
 }
 
 export interface CreateBookCommand {
   title: string;
   author: string;
   content: string;
+}
+
+export interface UpdateBookCommand {
+  title?: string;
+  author?: string;
+  content?: string;
 }

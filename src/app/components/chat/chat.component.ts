@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
+import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-chat',
@@ -55,7 +56,7 @@ import { ChatService } from '../../services/chat.service';
             <div class="sender-label" *ngIf="msg.sender === 'admin'">Human Assistant</div>
             <p>{{ msg.content }}</p>
             <div class="message-footer">
-              <div class="feedback-actions" *ngIf="msg.sender === 'admin'">
+              <div class="feedback-actions" *ngIf="msg.sender === 'agent' || msg.sender === 'admin'">
                 <button mat-icon-button (click)="onFeedback(i, 'up')" [color]="msg.feedback === 'up' ? 'primary' : ''" title="Thumb Up">
                   <mat-icon [class.filled]="msg.feedback === 'up'">thumb_up</mat-icon>
                 </button>
@@ -235,6 +236,7 @@ import { ChatService } from '../../services/chat.service';
 })
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   protected chatService = inject(ChatService);
+  private bookService = inject(BookService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
@@ -246,7 +248,17 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const bookId = params['id'];
-      this.bookTitle = 'Literary Dialogue'; // Could fetch title if needed, or keep it generic
+      this.bookTitle = 'Literary Dialogue';
+      if (bookId) {
+        this.bookService.getBook(bookId).subscribe({
+          next: (book) => {
+            if (book && book.title) {
+              this.bookTitle = book.title;
+            }
+          },
+          error: () => {}
+        });
+      }
       this.chatService.connect(bookId);
     });
   }

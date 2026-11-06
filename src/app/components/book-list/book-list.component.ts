@@ -58,7 +58,15 @@ import { CreateBookDialogComponent } from '../create-book-dialog/create-book-dia
               </div>
               <mat-card-header>
                 <mat-card-title>{{ book.title }}</mat-card-title>
-                <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+                <mat-card-subtitle>
+                  {{ book.author }}
+                  <span *ngIf="book.source_format" style="margin-left: 6px; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; background: #e8eaf6; color: #3f51b5; text-transform: uppercase;">
+                    {{ book.source_format }}
+                  </span>
+                  <span *ngIf="book.chunk_count !== undefined" style="margin-left: 6px; font-size: 0.72rem; color: #666;">
+                    ({{ book.chunk_count }} chunks)
+                  </span>
+                </mat-card-subtitle>
               </mat-card-header>
               <mat-card-actions>
                 <button mat-raised-button color="accent" (click)="openChat(book)">
